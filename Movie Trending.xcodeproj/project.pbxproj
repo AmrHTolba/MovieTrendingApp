@@ -97,11 +97,13 @@
 		E5F343C52A630327002805BB /* Movie Trending */ = {
 			isa = PBXGroup;
 			children = (
-				E5F343F62A6315DB002805BB /* MainViewController */,
+				E5F344022A633332002805BB /* Models */,
+				E5F344012A633329002805BB /* Views */,
+				E5F344002A63330D002805BB /* ViewModels */,
+				E5F343FF2A633301002805BB /* Services */,
+				E5F343FD2A6332E1002805BB /* Utilities */,
+				E5F343FC2A633172002805BB /* Resources */,
 				E5F343C62A630327002805BB /* AppDelegate.swift */,
-				E5F343CF2A630328002805BB /* Assets.xcassets */,
-				E5F343D12A630328002805BB /* LaunchScreen.storyboard */,
-				E5F343D42A630328002805BB /* Info.plist */,
 			);
 			path = "Movie Trending";
 			sourceTree = "<group>";
@@ -131,6 +133,60 @@
 			);
 			name = MainViewController;
 			path = "ؤMainViewController";
+			sourceTree = "<group>";
+		};
+		E5F343FC2A633172002805BB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5F343CF2A630328002805BB /* Assets.xcassets */,
+				E5F343D42A630328002805BB /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E5F343FD2A6332E1002805BB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E5F343FE2A6332EC002805BB /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E5F343FE2A6332EC002805BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E5F343FF2A633301002805BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E5F344002A63330D002805BB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E5F344012A633329002805BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5F343D12A630328002805BB /* LaunchScreen.storyboard */,
+				E5F343F62A6315DB002805BB /* MainViewController */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5F344022A633332002805BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,13 +488,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RMT2463FA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie Trending/Info.plist";
+				INFOPLIST_FILE = "Movie Trending/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -462,13 +519,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3RMT2463FA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Movie Trending/Info.plist";
+				INFOPLIST_FILE = "Movie Trending/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
