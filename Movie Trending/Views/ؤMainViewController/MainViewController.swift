@@ -9,9 +9,15 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-// MARK: - IBoutlets
+    // MARK: - Variables
+    
+    var viewModel: MainViewModel = MainViewModel()
+    // MARK: - IBoutlets
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    // MARK: - Class Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,36 +25,44 @@ class MainViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        self.title = "Main View"
         
         setupTableView()
     }
 
     
     func setupTableView() {
+        self.title = "Main View"
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        registerCells()
     }
 }
 
 
 
 // MARK: - Extensions
-
-
-extension MainViewController: UITableViewDelegate {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
-}
-
-extension MainViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row)"
+        
+        return cell
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-        
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(in: section)
+    }
+    
+    
+
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSections()
+    }
+    
+    func registerCells() {
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E59238E02A6559EF00120C18 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59238DF2A6559EF00120C18 /* MainViewModel.swift */; };
 		E5F343C72A630327002805BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F343C62A630327002805BB /* AppDelegate.swift */; };
 		E5F343D02A630328002805BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5F343CF2A630328002805BB /* Assets.xcassets */; };
 		E5F343D32A630328002805BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5F343D12A630328002805BB /* LaunchScreen.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E59238DF2A6559EF00120C18 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		E5F343C32A630327002805BB /* Movie Trending.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Trending.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F343C62A630327002805BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5F343CF2A630328002805BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		E5F344002A63330D002805BB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E59238DF2A6559EF00120C18 /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			files = (
 				E5F343C72A630327002805BB /* AppDelegate.swift in Sources */,
 				E5F343F92A6315EF002805BB /* MainViewController.swift in Sources */,
+				E59238E02A6559EF00120C18 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
