@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainViewModel {
+struct MainViewModel {
     
     
     func numberOfSections() -> Int {
@@ -19,5 +19,15 @@ class MainViewModel {
         return 10
     }
     
-    
+    func getData() {
+        APICaller.getTrendingMovies { result in
+            switch result {
+            case .success(let data):
+                print("Top Tredning Counts:\(data.results.count)")
+            case .failure(let error):
+                print(error)
+            }
+            
+        }
+    }
 }

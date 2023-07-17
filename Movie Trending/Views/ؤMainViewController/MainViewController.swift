@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Variables
     
-    var viewModel: MainViewModel = MainViewModel()
+    var viewModel = MainViewModel()
     // MARK: - IBoutlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -29,6 +29,10 @@ class MainViewController: UIViewController {
         setupTableView()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        viewModel.getData()
+        
+    }
     
     func setupTableView() {
         self.title = "Main View"
@@ -38,9 +42,8 @@ class MainViewController: UIViewController {
     }
 }
 
-
-
 // MARK: - Extensions
+
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
