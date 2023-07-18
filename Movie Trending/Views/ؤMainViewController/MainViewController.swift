@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     // MARK: - Variables
     
     var viewModel = MainViewModel()
-    var cellDataSource: [Movie] = []
+    var cellDataSource: [MovieTableCellViewModel] = []
     
     // MARK: - IBoutlets
     
@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     
     // Set up the table view by configuring its delegate, data source, and registering cells
     func setupTableView() {
-        self.title = "Main View"
+        self.title = "Top Trending Movies"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -84,10 +84,12 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let movieData = cellDataSource[indexPath.row]
-        cell.textLabel?.text = self.viewModel.getMovieTitle(movieData)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainViewCell.identifier, for: indexPath) as? MainViewCell else {
+            return UITableViewCell()
+        }
         
+        let cellViewModel = cellDataSource[indexPath.row]
+        cell.setupCell(viewModel: cellViewModel)
         return cell
     }
     
@@ -101,7 +103,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     // Register table view cells
     func registerCells() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(MainViewCell.register(), forCellReuseIdentifier: MainViewCell.identifier)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        150
     }
     
     // Reload the table view on the main queue

@@ -12,7 +12,7 @@ class MainViewModel {
     // MARK: - Variables
     
     var isLoading: Observable<Bool> = Observable(value: false)
-    var cellDataSource: Observable<[Movie]> = Observable(value: nil)
+    var cellDataSource: Observable<[MovieTableCellViewModel]> = Observable(value: nil)
     var dataSource: TrendingMoviesModel?
     
     // MARK: - Class Methods
@@ -52,7 +52,7 @@ class MainViewModel {
     
     // Maps the data source to the cell data source
     func mapCellData() {
-        self.cellDataSource.value = self.dataSource?.results ?? []
+        self.cellDataSource.value = self.dataSource?.results.compactMap({MovieTableCellViewModel(movie: $0)})
     }
     
     // Returns the title of a movie
