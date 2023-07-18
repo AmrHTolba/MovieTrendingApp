@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     // MARK: - Variables
     
     var viewModel = MainViewModel()
+    
     // MARK: - IBoutlets
     
     @IBOutlet weak var tableView: UITableView!
@@ -21,17 +22,12 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        
         
         setupTableView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         viewModel.getData()
-        
     }
     
     func setupTableView() {
@@ -53,13 +49,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRows(in: section)
     }
-    
-    
-
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
