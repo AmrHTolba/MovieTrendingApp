@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     // MARK: - Variables
     
     var viewModel = MainViewModel()
+    var cellDataSource: [Movie] = []
     
     // MARK: - IBoutlets
     
@@ -28,6 +29,8 @@ class MainViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         viewModel.getData()
     }
     
@@ -35,12 +38,14 @@ class MainViewController: UIViewController {
         self.title = "Main View"
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
         registerCells()
-        bindViewModel()
+        bindIsLoading()
+        bindCellDataSource()
     }
     
     // Check the isLoading value for any changes using the bind method and update the activity indicator based on it
-    func bindViewModel() {
+    func bindIsLoading() {
         viewModel.isLoading.bind { [weak self] isLoading in
             guard let self = self, let isLoading = isLoading else {
                 return
@@ -55,6 +60,16 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    func bindCellDataSource() {
+        viewModel.cellDataSource.bind { [weak self] movies in
+            guard let self = self, let movies = movies else {
+                return
+            }
+            self.cellDataSource = movies
+            self.reloadTableView()
+        }
+    }
 }
 
 // MARK: - Extensions
@@ -63,7 +78,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row)"
+        let movieData = cellDataSource[indexPath.row]
+        cell.textLabel?.text = self.viewModel.getMovieTitle(movieData)
         
         return cell
     }
@@ -78,5 +94,10 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerCells() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
