@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     
     // MARK: - IBoutlets
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -35,6 +36,24 @@ class MainViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         registerCells()
+        bindViewModel()
+    }
+    
+    // Check the isLoading value for any changes using the bind method and update the activity indicator based on it
+    func bindViewModel() {
+        viewModel.isLoading.bind { [weak self] isLoading in
+            guard let self = self, let isLoading = isLoading else {
+                return
+            }
+            DispatchQueue.main.async {
+                if isLoading {
+                    self.activityIndicator.startAnimating()
+                }
+                else {
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
     }
 }
 

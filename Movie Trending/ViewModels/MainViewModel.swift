@@ -7,8 +7,10 @@
 
 import Foundation
 
-struct MainViewModel {
+class MainViewModel {
     
+    var isLoading: Observable <Bool> = Observable(value: false)
+    var dataSource: TrendingMoviesModel?
     
     func numberOfSections() -> Int {
         
@@ -20,10 +22,16 @@ struct MainViewModel {
     }
     
     func getData() {
-        APICaller.getTrendingMovies { result in
+        if isLoading.value ?? true {
+            return
+        }
+        
+        APICaller.getTrendingMovies { [weak self] result in
+            self?.isLoading.value = false
             switch result {
             case .success(let data):
                 print("Top Tredning Counts:\(data.results.count)")
+                self?.dataSource = data
             case .failure(let error):
                 print(error)
             }
